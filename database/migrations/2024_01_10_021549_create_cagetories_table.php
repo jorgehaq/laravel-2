@@ -13,13 +13,14 @@ class CreateCagetoriesTable extends Migration
      */
     public function up()
     {
-        Schema::create('cagetories', function (Blueprint $table) {
+        Schema::create('categories', function (Blueprint $table) {
             $table->id();
             $table->string("name");
             $table->string("slug");
-            $table->longText("descripcion");
-            $table->tinyInteger('numbers')->default("0");
+            $table->longText("description");
+            $table->tinyInteger('status')->default("0");
             $table->tinyInteger('popular')->default("0");
+            $table->string("image");
             $table->string("meta_title");
             $table->string("meta_descrip");
             $table->string("meta_keywords");
@@ -34,6 +35,6 @@ class CreateCagetoriesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('cagetories');
+        Schema::dropIfExists('categories');
     }
 }
