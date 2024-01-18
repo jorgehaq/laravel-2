@@ -4,7 +4,6 @@ namespace App\Http\Controllers\Frontend;
 
 use App\Models\Product;
 use App\Models\Category;
-use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
 class FrontendController extends Controller
@@ -18,6 +17,7 @@ class FrontendController extends Controller
 
     public function category(){
         $category=Category::where('status','0')->get();
+
         return view('frontend.category', compact('category'));
     }
 
@@ -25,12 +25,29 @@ class FrontendController extends Controller
 
         if(Category::where('slug',$slug)->exists()){
             $category=Category::where('slug',$slug)->first();
-            $products=Product::where('cate_id','5')->where('status','0')->get();
+            $products=Product::where('cate_id',$category->id)->where('status','0')->get();
 
             return view('frontend.products.index',compact('category','products'));
         }
         else{
             return redirect('/')->with('status',"Slug doesn't exist");
+        }
+    }
+
+    public function viewproduct($cate_slug,$prod_slug){
+
+        if(Category::where('slug',$cate_slug)->exists()){
+            if(Product::where('slug',$prod_slug)->exists()){
+                $products=Product::where('slug',$prod_slug)->first();
+
+                return view('frontend.products.view',compact('products'));
+            }
+            else{
+                return redirect('/')->with('status',"The link was broken");
+            }
+        }
+        else{
+            return redirect('/')->with('status',"Not such category found");
         }
     }
 }
