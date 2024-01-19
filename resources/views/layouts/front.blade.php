@@ -32,8 +32,18 @@
   <!-- Nepcha is a easy-to-use web analytics. No cookies and fully compliant with GDPR, CCPA and PECR. -->
   <script defer data-site="YOUR_DOMAIN_HERE" src="https://api.nepcha.com/js/nepcha-analytics.js"></script>
 
+  {{-- Owl Carousel--}}
   <link rel="stylesheet" href="{{ asset('frontend/css/owl.carousel.min.css') }}" />
   <link rel="stylesheet" href="{{ asset('frontend/css/owl.theme.default.min.css') }}" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+  {{-- Google font awesonme--}}
+  <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+
+  {{--Font awesome--}}
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.2/css/fontawesome.min.css" integrity="sha384-BY+fdrpOd3gfeRvTSMT+VUZmA728cfF9Z2G42xpaRkUGu2i3DyzpTURDo5A6CaLK" crossorigin="anonymous">
 
   <style>
     a{
@@ -47,18 +57,15 @@
     @include('layouts.inc.frontnavbar')
 
     <div class="content">
-
-
-
         @yield('content')
     </div>
 
-  <!--   Core JS Files   -->
-  <script src="{{ asset('frontend/js/bootstrap.bundle.min.js') }}"></script>
-  <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+    <script src="{{ asset('frontend/js/jquery-3.7.1.min.js') }}"></script>
+    <script src="{{ asset('frontend/js/owl.carousel.min.js') }}"></script>
 
-  <script src="{{ asset('frontend/js/jquery-3.7.1.min.js') }}"></script>
-  <script src="{{ asset('frontend/js/owl.carousel.min.js') }}"></script>
+    <!--   Core JS Files   -->
+    <script src="{{ asset('frontend/js/bootstrap.bundle.min.js') }}"></script>
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 
   @if(session('status'))
     <script>
