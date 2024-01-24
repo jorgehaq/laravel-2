@@ -6,7 +6,11 @@
 
 <div class="py-3 mb-4 shadow-sm bg-warning border-top">
     <div class="container">
-        <h6 class="mb-0">Collections / {{ $products->category->name}} / {{ $products->name}}</h6>
+        <h6 class="mb-0">
+            <a href="{{ url('category')}}">Collections</a> /
+            <a href="{{ url('category/'.$products->category->slug) }}">{{  $products->category->name }}</a> /
+            <a href="{{ url('category/'.$products->category->slug.'/'.$products->slug) }}">{{ $products->name }}</a>
+        </h6>
     </div>
 </div>
 
@@ -69,68 +73,3 @@
 </div>
 
 @endsection
-
-
-@section('scripts')
-<script>
-    $(document).ready(function () {
-
-
-        $('.addToCartBtn').click(function (e) {
-            e.preventDefault();
-
-            var product_id=$(this).closest('.product_data').find('.prod_id').val();
-            var product_qty=$(this).closest('.product_data').find('.qty-button').val();
-
-            $.ajaxSetup({
-                headers: {
-                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-                }
-            });
-
-            $.ajax({
-                method: "POST",
-                url: "/add-to-cart",
-                data: {
-                    'product_id':product_id,
-                    'product_qty':product_qty,
-                },
-                success: function (response) {
-                    swal(response.status);
-                }
-            });
-
-            console.log(product_id);
-            console.log(product_qty);
-        });
-
-
-        $('.increment-btn').click(function (e) {
-            e.preventDefault();
-
-            var inc_value=$('.qty-button').val();
-            var value=parseInt(inc_value,10);
-            value=isNaN(value)?'0':value;
-
-            if(value<10){
-                value++;
-                $('.qty-button').val(value);
-            }
-        });
-        $('.decrement-btn').click(function (e) {
-            e.preventDefault();
-
-            var inc_value=$('.qty-button').val();
-            var value=parseInt(inc_value,10);
-            value=isNaN(value)?'0':value;
-
-            if(value>0){
-                value--;
-                $('.qty-button').val(value);
-            }
-        });
-    });
-</script>
-
-@endsection
-
