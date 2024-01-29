@@ -18,15 +18,21 @@
 <div class="container my-5">
     <div class="card shadow ">
         <div class="card-body">
+            @php
+            $total=0;
+            @endphp
             @foreach ($cartItems as $item)
-                <div class="row product_data">
-                    <div class="col-md-2">
+                <div class="row product_data" >
+                    <div class="col-md-2 my-auto">
                         <img src="{{ asset('assets/uploads/product/'.$item->products->image) }}" width="70px" height="70px" alt="Image Here">
                     </div>
-                    <div class="col-md-5">
+                    <div class="col-md-3 my-auto">
                         <h6>{{ $item->products->name }}</h6>
                     </div>
-                    <div class="col-md-3">
+                    <div class="col-md-2 my-auto">
+                        <h6>Rs {{ $item->products->selling_price }}</h6>
+                    </div>
+                    <div class="col-md-3 my-auto">
                         <input type="hidden" class="prod_id" value="{{ $item->prod_id }}">
                         <label for="Quantity">Quantity</label>
                         <div class="input-group text-center mb-3" style="width: 130px;">
@@ -35,10 +41,13 @@
                             <button class="input-group-text increment-btn">+</button>
                         </div>
                     </div>
-                    <div class="col-md-2">
+                    <div class="col-md-2 my-auto">
                         <button class="btn btn-danger delete-cart-item"><i class="fa fa-trash"></i>Remove</button>
                     </div>
                 </div>
+            @php
+            $total+=$item->products->selling_price*$item->prod_qty;
+            @endphp
             @endforeach
         </div>
     </div>
