@@ -17,11 +17,12 @@
 
 <div class="container my-5">
     <div class="card shadow ">
+        @if($cartitems->count()>0)
         <div class="card-body">
             @php
             $total=0;
             @endphp
-            @foreach ($cartItems as $item)
+            @foreach ($cartitems as $item)
                 <div class="row product_data" >
                     <div class="col-md-2 my-auto">
                         <img src="{{ asset('assets/uploads/product/'.$item->products->image) }}" width="70px" height="70px" alt="Image Here">
@@ -34,7 +35,7 @@
                     </div>
                     <div class="col-md-3 my-auto">
                         <input type="hidden" class="prod_id" value="{{ $item->prod_id }}">
-                        @if($item->products->qty>$item->prod_qty)
+                        @if($item->products->qty >= $item->prod_qty)
                             <label for="Quantity">Quantity</label>
                             <div class="input-group text-center mb-3" style="width: 130px;">
                                 <button class="input-group-text changeQuantity decrement-btn">-</button>
@@ -61,6 +62,12 @@
 
             </h6>
         </div>
+        @else
+        <div class="card-body text-center">
+            <h2>Your <i class="fa fa-shopping-cart"></i> is empty</h2>
+            <a href="{{ url('category')}}" class="btn btn-outline-primary float-end">Continue Shopping</a>
+        </div>
+        @endif
     </div>
 </div>
 @endsection

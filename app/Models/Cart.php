@@ -12,7 +12,7 @@ class Cart extends Model
 
     protected $table='carts';
 
-    protected $filiable=[
+    protected $fillable=[
         'user_id',
         'prod_id',
         'prod_qty',

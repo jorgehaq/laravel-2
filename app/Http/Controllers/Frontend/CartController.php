@@ -49,9 +49,9 @@ class CartController extends Controller
 
     public function viewcart() {
 
-        $cartItems=Cart::where('user_id',Auth::id())->get();
+        $cartitems=Cart::where('user_id',Auth::id())->get();
 
-        return view('frontend.cart',compact('cartItems'));
+        return view('frontend.cart',compact('cartitems'));
 
     }
 
@@ -62,8 +62,8 @@ class CartController extends Controller
             $prod_id=$request->input('prod_id');
             if(Cart::where('prod_id',$prod_id)->where('user_id',Auth::id())->exists()){
 
-                $cartItems=Cart::where('prod_id',$prod_id)->where('user_id',Auth::id())->first();
-                $cartItems->delete();
+                $cartitems=Cart::where('prod_id',$prod_id)->where('user_id',Auth::id())->first();
+                $cartitems->delete();
 
                 return response()->json(['status'=>"Product Removed from Cart"]);
             }

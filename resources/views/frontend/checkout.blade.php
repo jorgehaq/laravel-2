@@ -17,7 +17,7 @@
 
 <div class="container mt-5">
     <form action="{{ url('place-order')}}" method="POST" class="form-control">
-        @method='POST'
+        {{ csrf_field() }}
         <div class="row">
             <div class="col-md-7">
                 <div class="card">
@@ -27,43 +27,43 @@
                         <div class="row checkout-form">
                             <div class="col-md-6">
                                 <label for="">First Name</label>
-                                <input type="text" class="form-control" placeholder="Enter First Name">
+                                <input type="text" name="fname" class="form-control" value="{{ Auth::user()->name; }}" placeholder="Enter First Name">
                             </div>
                             <div class="col-md-6">
                                 <label for="">Last Name</label>
-                                <input type="text" class="form-control" placeholder="Enter Last Name">
+                                <input type="text" name="lname" class="form-control" value="{{ Auth::user()->lname; }}" placeholder="Enter Last Name">
                             </div>
                             <div class="col-md-6">
                                 <label for="">Email</label>
-                                <input type="text" class="form-control" placeholder="Enter Email">
+                                <input type="text" name="email" class="form-control" value="{{ Auth::user()->email; }}" placeholder="Enter Email">
                             </div>
                             <div class="col-md-6">
                                 <label for="">Phone Number</label>
-                                <input type="text" class="form-control" placeholder="Enter Phone Number">
+                                <input type="text" name="phone" class="form-control" value="{{ Auth::user()->phone; }}" placeholder="Enter Phone Number">
                             </div>
                             <div class="col-md-6">
                                 <label for="">Address 1</label>
-                                <input type="text" class="form-control" placeholder="Enter Address 1">
+                                <input type="text" name="address1" class="form-control" value="{{ Auth::user()->address1; }}" placeholder="Enter Address 1">
                             </div>
                             <div class="col-md-6">
                                 <label for="">Address 2</label>
-                                <input type="text" class="form-control" placeholder="Enter Address 2">
+                                <input type="text" name="address2" class="form-control" value="{{ Auth::user()->address2; }}" placeholder="Enter Address 2">
                             </div>
                             <div class="col-md-6">
                                 <label for="">City</label>
-                                <input type="text" class="form-control" placeholder="Enter City">
+                                <input type="text" name="city" class="form-control" value="{{ Auth::user()->city; }}" placeholder="Enter City">
                             </div>
                             <div class="col-md-6">
                                 <label for="">State</label>
-                                <input type="text" class="form-control" placeholder="Enter First Name">
+                                <input type="text" name="state" class="form-control" value="{{ Auth::user()->state; }}" placeholder="Enter State">
                             </div>
                             <div class="col-md-6">
                                 <label for="">Country Name</label>
-                                <input type="text" class="form-control" placeholder="Enter Country">
+                                <input type="text" name="country" class="form-control" value="{{ Auth::user()->country; }}" placeholder="Enter Country">
                             </div>
                             <div class="col-md-6">
                                 <label for="">Pin Code</label>
-                                <input type="text" class="form-control" placeholder="Enter Pin Code">
+                                <input type="text" name="pincode" class="form-control" value="{{ Auth::user()->pincode; }}" placeholder="Enter Pin Code">
                             </div>
                         </div>
                     </div>
