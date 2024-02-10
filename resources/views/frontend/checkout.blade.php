@@ -18,6 +18,7 @@
 <div class="container mt-5">
     <form action="{{ url('place-order')}}" method="POST" class="form-control">
         {{ csrf_field() }}
+        @method('POST')
         <div class="row">
             <div class="col-md-7">
                 <div class="card">
