@@ -1,26 +1,17 @@
-@extends('layouts.front')
+@extends('layouts.admin')
 
 @section('title')
- My Orders
+Orders
 @endsection
 
 @section('content')
 
-<div class="py-3 mb-4 shadow-sm bg-warning border-top">
-    <div class="container">
-        <h6 class="mb-0">
-            <a href="{{ url('/')}}">Home</a> /
-            <a href="{{ url('cart') }}">Cart</a>
-        </h6>
-    </div>
-</div>
-
 <div class="container">
     <div class="row">
-        <div class="col-md-7 m-auto">
+        <div class="col-md-12">
             <div class="card">
                 <div class="card-header">
-                    <h4>My Orders</h4>
+                    <h4>New Orders</h4>
                 </div>
                 <div class="card-body">
                     <table class="table table-bordered">
@@ -41,7 +32,7 @@
                                     <td>{{ $order->total_price}}</td>
                                     <td>{{ $order->status=='0'?'pending':'completed'}}</td>
                                     <td>
-                                        <a href="{{ url('view-order/'.$order->id)}}" class="btn btn-primary">View</a>
+                                        <a href="{{ url('admin/view-order/'.$order->id)}}" class="btn btn-primary">View</a>
                                     </td>
                                 </tr>
                             @endforeach
@@ -52,6 +43,4 @@
         </div>
     </div>
 </div>
-
-
 @endsection
