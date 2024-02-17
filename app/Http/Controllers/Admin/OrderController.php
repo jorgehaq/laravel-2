@@ -17,6 +17,24 @@ class OrderController extends Controller
 
     public function vieworder($id){
 
-        return view();
+        $orders=Order::where('id',$id)->first();
+
+        return view('admin.orders.view', compact('orders'));
+    }
+
+    public function update(Request $request, $id){
+
+        //$orders=Order::where('id',$id)->first();
+        $orders=Order::find($id);
+
+        $orders->status=$request->input('order_status');
+
+        $orders->update();
+
+        return redirect('orders')->with('status','Order Updated Successfully');
+    }
+
+    public function orderhistory(){
+
     }
 }

@@ -88,5 +88,9 @@ Route::middleware(['auth', 'isAdmin'])->group(function () {
 
     Route::get('admin/view-order/{id}',[OrderController::class,'vieworder']);
 
+    Route::put('update-order/{id}',[OrderController::class,'update']);
+
+    Route::get('order-history',[OrderController::class,'orderhistory']);
+
 });
 
