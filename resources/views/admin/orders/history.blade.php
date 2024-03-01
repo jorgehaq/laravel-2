@@ -11,9 +11,8 @@ Orders
         <div class="col-md-12">
             <div class="card">
                 <div class="card-header">
-                    <h4>New Orders
-
-                        <a href="{{ url('order-history')}}" class="btn btn-warning float-end">Order History</a>
+                    <h4>Order History
+                        <a href="{{ url('orders')}}" class="btn btn-warning float-end">New Orders</a>
                     </h4>
                 </div>
                 <div class="card-body">

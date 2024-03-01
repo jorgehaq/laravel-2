@@ -6,6 +6,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Frontend\CartController;
 use App\Http\Controllers\Admin\ProductController;
 use App\Http\Controllers\Admin\CategoryController;
+use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\FrontendController as AdminFrontendController;
 use App\Http\Controllers\Admin\OrderController;
 use App\Http\Controllers\Frontend\CheckoutController;
@@ -91,6 +92,10 @@ Route::middleware(['auth', 'isAdmin'])->group(function () {
     Route::put('update-order/{id}',[OrderController::class,'update']);
 
     Route::get('order-history',[OrderController::class,'orderhistory']);
+
+    Route::get('users',[DashboardController::class,'users']);
+
+    Route::get('view-user/{id}',[DashboardController::class,'viewuser']);
 
 });
 
